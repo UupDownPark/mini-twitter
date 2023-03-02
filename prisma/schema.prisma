@@ -19,3 +19,9 @@ model User{
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
 }
+
+model Tweet {
+  id  Int @id @default(autoincrement())
+  content String 
+  
+}
