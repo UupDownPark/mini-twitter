@@ -3,11 +3,14 @@
 
 generator client {
   provider = "prisma-client-js"
+  
+  // 다른 객체에 연결될 때 그 객체가 존재하길 바란다는것
 }
 
 datasource db {
   provider = "sqlite"
   url      = "file:./dev.db"
+  
 }
 
 model User{
@@ -23,5 +26,5 @@ model User{
 model Tweet {
   id  Int @id @default(autoincrement())
   content String 
-  
+
 }
