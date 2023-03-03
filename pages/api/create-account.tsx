@@ -5,10 +5,16 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  await db.user.create({
-    data: { name: "" },
-  });
-  res.json({
+  if (req.method === "POST") {
+    console.log(JSON.parse(req.body));
+    const { data } = JSON.parse(req.body);
+    const { username, email } = data;
+    await db.user.create({
+      data: { name: username, email: email },
+    });
+  }
+
+  res.status(200).json({
     ok: true,
     data: "xx",
   });

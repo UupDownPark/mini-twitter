@@ -14,13 +14,18 @@ export default function Create() {
     formState: { errors },
   } = useForm<LoginForm>({ mode: "onBlur" });
 
-  const onValid = (data: LoginForm) => {
+  const onValid = async (data: LoginForm) => {
+    await fetch("/api/create-account", {
+      method: "post",
+      body: JSON.stringify({ data }),
+    });
+
     console.log("im valid");
   };
   const onInvalid = (errors: FieldErrors) => {
-    console.log(errors);
+    // console.log(errors);
   };
-  console.log(watch());
+  // console.log(watch());
   return (
     <div className="w-full h-screen bg-gray-400 justify-center items-center p-10">
       <form
