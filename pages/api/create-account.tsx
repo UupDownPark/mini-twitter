@@ -6,10 +6,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   await db.user.create({
-    data: {
-      email: "hi",
-      name: "hi",
-    },
+    data: { name: "" },
   });
   res.json({
     ok: true,

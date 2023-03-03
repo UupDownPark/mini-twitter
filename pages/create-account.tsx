@@ -13,6 +13,7 @@ export default function Create() {
     handleSubmit,
     formState: { errors },
   } = useForm<LoginForm>({ mode: "onBlur" });
+
   const onValid = (data: LoginForm) => {
     console.log("im valid");
   };
