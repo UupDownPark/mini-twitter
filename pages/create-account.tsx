@@ -18,12 +18,12 @@ export default function Create() {
     await fetch("/api/create-account", {
       method: "post",
       body: JSON.stringify({ data }),
-    });
-
-    console.log("im valid");
+    })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
   const onInvalid = (errors: FieldErrors) => {
-    // console.log(errors);
+    console.log(errors);
   };
   // console.log(watch());
   return (
@@ -51,7 +51,8 @@ export default function Create() {
             required: "네이버 혹은 지메일 이메일이 필요합니다!!",
             validate: {
               notGoodemail: (value) =>
-                value.includes("@gmail.com" || "@naver.com") ||
+                value.includes("@gmail.com") ||
+                value.includes("@naver.com") ||
                 "유효한 이메일이 아닙니다!!",
             },
           })}
