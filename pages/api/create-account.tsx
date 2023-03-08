@@ -18,11 +18,14 @@ export default async function handler(
       });
       res.status(200).json({
         ok: true,
-        data: "xx",
+        data: "계정생성완료",
       });
+      if (check) {
+        res.status(200).json({
+          ok: false,
+          data: "같은 계정이 있습니다.",
+        });
+      }
     }
-    res.status(404).json({
-      data: "같은 아이디가 있습니다!!",
-    });
   }
 }
