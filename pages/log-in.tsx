@@ -12,8 +12,12 @@ export default function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm<LoginForm>({ mode: "onBlur" });
-  const onValid = (data: LoginForm) => {
-    console.log("im valid");
+  const onValid = async (data: LoginForm) => {
+    const response = await fetch("/api/log-in", {
+      method: "GET",
+    }).then((res) => console.log(res));
+    const value = await response.json();
+    console.log(value);
   };
   const onInvalid = (errors: FieldErrors) => {
     console.log(errors);
